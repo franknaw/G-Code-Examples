@@ -1,0 +1,73 @@
+%
+(use .25 endmill)
+(1 inch stock material thickness)
+G64 P0.001
+S27000 M3
+G0 Z0.25 X0.0 Y0.0 F5
+
+(jig hole subroutine)
+O100 SUB
+G0 X-#1 Y0 F#3
+G1 Z-#2 F#3
+G2 I#1
+O100 ENDSUB
+
+(square subroutine)
+O200 SUB
+G0 X1.50 Y-1.75 F#2
+G1 Z-#1 F#2
+G1 X1.50 Y1.75 F#2
+G1 X-1.50 Y1.75
+G1 X-1.50 Y-1.75
+G1 X1.50 Y-1.75
+G0 Z0.25 F#2
+O200 ENDSUB
+
+#3 = 7 (Feed Rate)
+
+(0.5 1/2 hole size of .1)
+(0.5 minus 1/2 tool size of .25 = .375)
+(Circumference, Depth, Feed Rate)
+#4 = 0.375 (Circumference)
+
+O100 CALL [#4][0.15][#3]
+O100 CALL [0.20][0.15][#3]
+O100 CALL [0.10][0.15][#3]
+
+O100 CALL [#4][0.25][#3]
+O100 CALL [0.20][0.25][#3]
+O100 CALL [0.10][0.25][#3]
+
+O100 CALL [#4][0.35][#3]
+O100 CALL [0.20][0.35][#3]
+O100 CALL [0.10][0.35][#3]
+
+O100 CALL [#4][0.45][#3]
+O100 CALL [0.20][0.45][#3]
+O100 CALL [0.10][0.45][#3]
+
+(bolt hole - top left)
+G0 Z0.25 F#3
+G0 X-0.65 Y-1.25 F#3
+G1 Z-0.25 F#3
+G1 Z0.25 F#3
+G1 Z-0.50 F#3
+G1 Z0.25 F#3
+G1 Z-0.75 F#3
+G1 Z0.25 F#3
+
+(bolt hole - top right)
+G0 Z0.25 F#3
+G0 X-0.65 Y1.25 F#3
+G1 Z-0.25 F#3
+G1 Z0.25 F#3
+G1 Z-0.50 F#3
+G1 Z0.25 F#3
+G1 Z-0.75 F#3
+G1 Z0.25 F#3
+
+G0 X0 Y0 F5
+(Stop Spindle)
+M5
+M02
+%
