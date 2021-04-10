@@ -3,4 +3,4 @@
 * See Wiki - https://github.com/franknaw/G-Code-Examples/wiki
 
 #### Also the orginator of PurplePlectrums custom guitar picks
-* See PurplePlectrums - (https://www.purpleplectrums.com
+* See PurplePlectrums - https://www.purpleplectrums.com
