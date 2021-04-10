@@ -1,0 +1,42 @@
+%
+(end mill .25)
+G64 P0.001
+S27000 M3
+G0 X.25 Y-.60 Z.25 F25
+
+(Knob Hole)
+(old)
+(0.75 diameter minus 1/2 for radius 0.375)
+(minus 1/2 end mill diameter = .125)
+(.375 - .125 = .25 for new radius)
+(new)
+(0.65 diameter minus 1/2 for radius 0.325)
+(minus 1/2 end mill diameter = .125)
+(.325 - .125 = .2 for new radius)
+
+
+
+G01 X.25 Y-.60 Z-.280 F25 
+G2 I.2
+G01 X.25 Y-.60 Z.25 F25 
+
+(Lock Hole)
+(1/4 diameter, just use end mill)
+G01 X1.2 Y-.60 Z.25 F25 
+G1 Z-.280 F25
+G01 X1.2 Y-.60 Z.25 F25 
+
+(Main Shape)
+G01 X.5 Y.0 Z.25 F25 
+G01 Y.0 Z-.280  
+    X1
+G02 X1 Y-1.2 I0 J-.60
+G01 X.5 
+G02 X.5 Y.0 I0 J.60
+
+G0 X.5 Y.0 Z.25
+(Stop Spindle)
+M5
+M02
+%
+
