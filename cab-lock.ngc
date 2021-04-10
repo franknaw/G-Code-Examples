@@ -14,8 +14,6 @@ G0 X.25 Y-.60 Z.25 F25
 (minus 1/2 end mill diameter = .125)
 (.325 - .125 = .2 for new radius)
 
-
-
 G01 X.25 Y-.60 Z-.280 F25 
 G2 I.2
 G01 X.25 Y-.60 Z.25 F25 
@@ -39,4 +37,3 @@ G0 X.5 Y.0 Z.25
 M5
 M02
 %
-
