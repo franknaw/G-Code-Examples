@@ -24,12 +24,12 @@ G1 Z-.70 F5
 G0 Z0.10 F2
 
 
-(washer circumference .65)
-(I mode is the radius the circumference)
-(So for circumference of .65 I would .325)
+(washer diameter .65)
+(I mode is the radius which is 1/2 of the diameter)
+(So for diameter of .65 I would .325)
 (The diameter of the end mill needs to be considered)
 (1/2 the .25 end mill is .125)
-(.325 - .125 = .2 this is the new radius for .65 circumference)
+(.325 - .125 = .2 this is the new radius for .65 diameter)
 
 G0 X-.2 Y0 F5
 G1 Z-.12 F5
@@ -43,7 +43,7 @@ G2 I.2
 G0 Z0.25 F2
 
 
-(bolt hole .25, same circumference of endmill)
+(bolt hole .25, same diameter of endmill)
 G0 X-.025 Y6 F5
 G1 Z-.12 F5
 
