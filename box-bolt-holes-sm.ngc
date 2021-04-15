@@ -2,26 +2,26 @@
 (end mill .25)
 G64 P0.001
 S27000 M3
-G0 Z0.25 X0.0 Y0.0 F5
+G0 Z0.25 X0.0 Y0.0
 
 (bolt hole .25)
-G0 X-.025 Y0 F5
+G0 X-.025 Y0 
 G1 Z-.12 F5
 
-G0 X-.025 Y0 F5
+G0 X-.025 Y0 
 G1 Z-.25 F5
 
-G0 X-.025 Y0 F5
+G0 X-.025 Y0 
 G1 Z-.40 F5
 
-G0 X-.025 Y0 F5
+G0 X-.025 Y0 
 G1 Z-.55 F5
 
-G0 X-.025 Y0 F5
+G0 X-.025 Y0 
 G1 Z-.70 F5
 
 
-G0 Z0.10 F2
+G0 Z0.10 
 
 
 (washer diameter .65)
@@ -31,53 +31,53 @@ G0 Z0.10 F2
 (1/2 the .25 end mill is .125)
 (.325 - .125 = .2 this is the new radius for .65 diameter)
 
-G0 X-.2 Y0 F5
+G0 X-.2 Y0 
 G1 Z-.12 F5
 G2 I.2
 
-G0 X-.2 Y0 F5
+G0 X-.2 Y0 
 G1 Z-.25 F5
 G2 I.2
 
 
-G0 Z0.25 F2
+G0 Z0.25 
 
 
 (bolt hole .25, same diameter of endmill)
-G0 X-.025 Y6 F5
+G0 X-.025 Y6 
 G1 Z-.12 F5
 
-G0 X-.025 Y6 F5
+G0 X-.025 Y6 
 G1 Z-.25 F5
 
 
-G0 X-.025 Y6 F5
+G0 X-.025 Y6 
 G1 Z-.40 F5
 
-G0 X-.025 Y6 F5
+G0 X-.025 Y6 
 G1 Z-.55 F5
 
-G0 X-.025 Y6 F5
+G0 X-.025 Y6 
 G1 Z-.70 F5
 
 
-G0 Z0.10 F2
+G0 Z0.10 
 
 
 (socket hole .65)
-G0 X-.2 Y6 F5
+G0 X-.2 Y6
 G1 Z-.12 F5
 G2 I.2
 
-G0 X-.2 Y6 F5
+G0 X-.2 Y6 
 G1 Z-.25 F5
 G2 I.2
 
 
-G0 Z0.25 F2
+G0 Z0.25 
 
 
-G0 X0 Y0 F5
+G0 X0 Y0 
 (Stop Spindle)
 M5
 M02
