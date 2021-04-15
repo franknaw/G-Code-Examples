@@ -2,7 +2,7 @@
 (end mill .25)
 G64 P0.001
 S27000 M3
-G0 X.25 Y-.60 Z.25 F25
+G0 X.25 Y-.60 Z.25
 
 (Knob Hole)
 (old)
