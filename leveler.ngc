@@ -1,0 +1,64 @@
+%
+(This program will level a surface)
+(end mill .25)
+G64 P0.001
+S27000 M3
+G0 X0 Y0 Z.15 
+
+
+(Loop Counter)
+#100=1
+
+(X Size value 10 x .40 = width)
+(.40 is .20 with two passes)
+(So .40 x 10 = 4 inches)
+#106=10
+
+(Y Size)
+#101=4.0
+
+(Increment Size)
+#102=.20
+
+(Cut Per Pass)
+#107=.20
+
+(Z Cut Depth)
+#105=.05
+
+(Z Feed Rate)
+#103=20
+
+(Feed Rate)
+#104=40
+
+O100 SUB
+G1 X#1 Y#2
+G1 X#1 Y0
+O100 ENDSUB
+
+O200 SUB
+G1 X#1 Y0
+G1 X#1 Y#2
+O200 ENDSUB
+
+G1 Z-#105 F#103
+G1 X0 Y#101 F#104
+
+O100 WHILE [#100 LE #106]
+O100 CALL [#102][#101]
+#102 = [#102 + #107]
+O200 CALL [#102][#101]
+#102 = [#102 + #107]
+#100 = [#100 + 1]
+O100 ENDWHILE
+
+
+G0 Z0.25
+
+G0 X0 Y0 Z.25
+(Stop Spindle)
+M5
+M02
+%
+
