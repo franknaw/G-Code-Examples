@@ -1,0 +1,72 @@
+%
+(Ballnose Endmill .25)
+G64 P0.001
+S27000 M3
+G0 X0 Y0 Z.25 
+
+(Initial settings)
+O100 SUB
+(Loop Counter)
+#100=1
+(Y Increment, increments in while loop)
+#101=0
+(Loop total determines Y length)
+#102=3 (18 = Y=7)
+(X Length)
+#103=6
+(Endmill increment)
+#104=.20
+(Feed Rate)
+#105=75
+G01 Z.25 F#105
+G01 X0 Y0 Z.25
+O100 ENDSUB
+
+
+(Set tool plane to X, Z - run counter clockwise G02)
+O200 SUB
+G17
+G01 Y#1 
+G18 G02 X#103 Y#1 R#2
+G17
+O200 ENDSUB
+
+(Set tool plane to X, Z - run clockwise G03)
+O300 SUB
+G17
+G01 Y#1 
+G18 G03 X0 Y#1 R#2
+G17
+O300 ENDSUB
+
+(Main subroutine that uses loop to build out cutting path)
+O400 SUB
+G01 Z-.0
+O100 WHILE [#100 LE #102]
+O200 CALL [#101][#1]
+#101 = [#101 + #104]
+O300 CALL [#101][#1]
+#101 = [#101 + #104]
+#100 = [#100 + 1]
+O100 ENDWHILE
+O400 ENDSUB
+
+(Concave plane - pencil holder)
+(R30 Z-.15, R15 Z-.30, R10 Z-.46)
+O100 CALL
+O400 CALL [30]
+
+O100 CALL
+O400 CALL [15]
+
+O100 CALL
+O400 CALL [10]
+
+O100 CALL
+
+
+G0 X0 Y0 Z.25
+(Stop Spindle)
+M5
+M02
+%
