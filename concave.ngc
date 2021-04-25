@@ -1,61 +1,8 @@
 %
-(Endmill 1/4)
-
+(Ballnose Endmill .25)
 G64 P0.001
 S27000 M3
-G0 Z0.25 X0.0 Y0.0
-
-
-(main rec)
-(6.5 L, 12 W)
-O101 SUB
-G1 Z.15 F62
-G1 X0 Y12 
-G1 X6.5 Y12 
-G1 X6.5 Y0
-G1 X0 Y0
-O101 ENDSUB
-
-
-(Bottom rec - lead holder)
-(2.5 L, 6 W)
-O102 SUB
-G0 X.25 Y.25
-G1 Z.15 F62
-G1 X.25 Y2.5 
-G1 X6.25 Y2.5 
-G1 X6.25 Y.25
-G1 X.25 Y.25
-O102 ENDSUB
-
-
-(Top rec - eraser holder)
-(2.5 L, 3.5 W)
-O103 SUB
-G0 X.25 Y11.75
-G1 Z.15 F62
-G1 X.25 Y9.25 
-G1 X3.5 Y9.25 
-G1 X3.5 Y11.75
-G1 X.25 Y11.75
-O103 ENDSUB
-
-
-(Circle to hold sharpener)
-(1.3 diameter minus 1/2 for radius 0.65)
-(minus 1/2 end mill diameter = .125)
-(.525 - .125 = .525 for new radius)
-O104 SUB
-G0 X4.5 Y10.5
-G2 I.525
-O104 ENDSUB
-
-
-O101 CALL
-O102 CALL
-O103 CALL
-O104 CALL
-
+G0 X0 Y0 Z.25 
 
 (Initial settings)
 O100 SUB
@@ -112,7 +59,7 @@ O100 CALL
 O400 CALL [30]
 
 O100 CALL
-(O400 CALL [15])
+O400 CALL [15]
 
 O100 CALL
 O400 CALL [10]
@@ -120,9 +67,7 @@ O400 CALL [10]
 O100 CALL
 
 
-
-
-G0 X0 Y0 Z0.25
+G0 X0 Y0 Z.25
 (Stop Spindle)
 M5
 M02
