@@ -1,25 +1,80 @@
 %
-(Ballnose Endmill .25)
+(Endmill 1/4)
+
 G64 P0.001
 S27000 M3
-G0 X0 Y0 Z.25 
+G0 Z0.25 X0.0 Y0.0
+
+
+(main rec)
+(6.5 L, 12 W)
+O101 SUB
+G1 Z.15 F62
+G1 X0 Y12 
+G1 X6.5 Y12 
+G1 X6.5 Y0
+G1 X0 Y0
+O101 ENDSUB
+
+
+(Bottom rec - lead holder)
+(2.5 L, 6 W)
+O102 SUB
+G0 X.25 Y.25
+G1 Z.15 F62
+G1 X.25 Y2.5 
+G1 X6.25 Y2.5 
+G1 X6.25 Y.25
+G1 X.25 Y.25
+O102 ENDSUB
+
+
+(Top rec - eraser holder)
+(2.5 L, 3.5 W)
+O103 SUB
+G0 X.25 Y11.75
+G1 Z.15 F62
+G1 X.25 Y9.25 
+G1 X3.5 Y9.25 
+G1 X3.5 Y11.75
+G1 X.25 Y11.75
+O103 ENDSUB
+
+
+(Circle to hold sharpener)
+(1.3 diameter minus 1/2 for radius 0.65)
+(minus 1/2 end mill diameter = .125)
+(.525 - .125 = .525 for new radius)
+O104 SUB
+G0 X4.5 Y10.5
+G2 I.525
+O104 ENDSUB
+
+
+O101 CALL
+O102 CALL
+O103 CALL
+O104 CALL
+
 
 (Initial settings)
 O100 SUB
 (Loop Counter)
 #100=1
 (Y Increment, increments in while loop)
-#101=0
+#101=2
 (Loop total determines Y length)
-#102=3 (18 = Y=7)
+#102=18 (18 = Y=7)
 (X Length)
-#103=6
+#103=6.25
 (Endmill increment)
 #104=.20
 (Feed Rate)
 #105=75
+(X Offset)
+#106=.25
 G01 Z.25 F#105
-G01 X0 Y0 Z.25
+G01 X#106 Y#101 Z.25
 O100 ENDSUB
 
 
@@ -35,7 +90,7 @@ O200 ENDSUB
 O300 SUB
 G17
 G01 Y#1 
-G18 G03 X0 Y#1 R#2
+G18 G03 X#106 Y#1 R#2
 G17
 O300 ENDSUB
 
@@ -57,7 +112,7 @@ O100 CALL
 O400 CALL [30]
 
 O100 CALL
-O400 CALL [15]
+(O400 CALL [15])
 
 O100 CALL
 O400 CALL [10]
@@ -65,7 +120,9 @@ O400 CALL [10]
 O100 CALL
 
 
-G0 X0 Y0 Z.25
+
+
+G0 X0 Y0 Z0.25
 (Stop Spindle)
 M5
 M02
