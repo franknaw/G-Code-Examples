@@ -8,7 +8,7 @@ G0 X0 Y0 Z.25
 O100 SUB
 (Loop Counter)
 #100=1
-(Y Increment, increments in while loop)
+(Y start offset, increments in while loop)
 #101=2
 (Loop total determines Y length)
 #102=18 (18 = Y=7)
