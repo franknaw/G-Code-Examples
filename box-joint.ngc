@@ -1,0 +1,82 @@
+%
+(end mill 1/2)
+(male box joint at 1/2 with 3/4 depth and 1/2 spacers)
+(CNC modification to allow boards to be placed vertically)
+G64 P0.001
+S27000 M3
+G0 Z0.25 X0.0 Y0.0
+
+
+(#############################)
+
+O100 SUB (Set vars)
+(Feed Rate)
+#101=50
+(Z Feed Rate)
+#102=20
+(Loop Counter)
+#200=1
+(Box Total)
+#201=12 (This is for a board that is 12" wide)
+(Box Spacer)
+#202=.25
+O100 ENDSUB
+
+(#############################)
+
+O101 SUB (Rapid XY)
+G0 X0 Y#1 
+O101 ENDSUB
+
+(#############################)
+
+O102 SUB (Rapid Z)
+G0 Z0.10 
+O102 ENDSUB
+
+(#############################)
+
+O103 SUB (Right Pass)
+G1 Z-#1 F#101
+G1 X1 Y#2 F#102 
+O103 ENDSUB
+
+(#############################)
+
+O104 SUB (Left Pass)
+G1 Z-#1 F#101
+G1 X0 Y#2 F#102
+O104 ENDSUB
+
+(#############################)
+
+O100 CALL (set Vars)
+
+(#############################)
+
+O105 SUB
+O100 WHILE [#200 LE #201]
+O101 CALL [#202]
+O103 CALL [.15][#202]
+O104 CALL [.30][#202]
+O103 CALL [.45][#202]
+O104 CALL [.60][#202]
+O103 CALL [.75][#202]
+#200 = [#200 + 1]
+#202 = [#202 + 1]
+O102 CALL
+O100 ENDWHILE
+O105 ENDSUB
+
+(#############################)
+(#############################)
+
+O105 CAll (Main)
+
+
+G0 X0 Y0 F5
+(Stop Spindle)
+M5
+M02
+%
+
