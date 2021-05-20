@@ -54,7 +54,7 @@ O100 CALL (set Vars)
 
 (#############################)
 
-O105 SUB
+O105 SUB (Main)
 O100 WHILE [#200 LE #201]
 O101 CALL [#202]
 O103 CALL [.15][#202]
